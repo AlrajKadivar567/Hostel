@@ -99,3 +99,56 @@ button:hover {
 .delete:hover {
   background: #922b21;
 }
+
+.menu {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.menu-item {
+  background: #eef1fb;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.menu-item h4 {
+  margin: 0 0 6px 0;
+  color: #2c3e91;
+}
+
+.menu-item p {
+  margin: 0;
+}
+
+.login {
+  max-width: 350px;
+  margin: 30px auto;
+}
+
+.error {
+  color: #c0392b;
+  margin: 0;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.topbar p {
+  margin: 0;
+}

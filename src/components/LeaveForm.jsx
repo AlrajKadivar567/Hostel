@@ -1,8 +1,6 @@
 import { useState } from 'react'
 
-function LeaveForm({ addLeave }) {
-  const [name, setName] = useState('')
-  const [room, setRoom] = useState('')
+function LeaveForm({ addLeave, user }) {
   const [from, setFrom] = useState('')
   const [to, setTo] = useState('')
   const [reason, setReason] = useState('')
@@ -11,15 +9,13 @@ function LeaveForm({ addLeave }) {
     e.preventDefault()
     addLeave({
       id: Date.now(),
-      name,
-      room,
+      name: user.name,
+      room: user.room,
       from,
       to,
       reason,
       status: 'Pending'
     })
-    setName('')
-    setRoom('')
     setFrom('')
     setTo('')
     setReason('')
@@ -28,8 +24,6 @@ function LeaveForm({ addLeave }) {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Apply for Leave</h2>
-      <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-      <input placeholder="Room number" value={room} onChange={(e) => setRoom(e.target.value)} required />
       <label>From</label>
       <input type="date" value={from} onChange={(e) => setFrom(e.target.value)} required />
       <label>To</label>

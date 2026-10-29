@@ -1,4 +1,4 @@
-function ComplaintList({ complaints, markDone, deleteComplaint }) {
+function ComplaintList({ complaints, markDone, deleteComplaint, isAdmin }) {
   return (
     <div>
       <h2>Complaints</h2>
@@ -9,12 +9,14 @@ function ComplaintList({ complaints, markDone, deleteComplaint }) {
           <p>Type: {complaint.type}</p>
           <p>{complaint.details}</p>
           <p>Status: <span className={complaint.status === 'Done' ? 'done' : 'pending'}>{complaint.status}</span></p>
-          <div className="buttons">
-            {complaint.status === 'Pending' && (
-              <button onClick={() => markDone(complaint.id)}>Mark Done</button>
-            )}
-            <button className="delete" onClick={() => deleteComplaint(complaint.id)}>Delete</button>
-          </div>
+          {isAdmin && (
+            <div className="buttons">
+              {complaint.status === 'Pending' && (
+                <button onClick={() => markDone(complaint.id)}>Mark Done</button>
+              )}
+              <button className="delete" onClick={() => deleteComplaint(complaint.id)}>Delete</button>
+            </div>
+          )}
         </div>
       ))}
     </div>

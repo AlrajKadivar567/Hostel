@@ -1,8 +1,6 @@
 import { useState } from 'react'
 
-function ComplaintForm({ addComplaint }) {
-  const [name, setName] = useState('')
-  const [room, setRoom] = useState('')
+function ComplaintForm({ addComplaint, user }) {
   const [type, setType] = useState('Food')
   const [details, setDetails] = useState('')
 
@@ -10,14 +8,12 @@ function ComplaintForm({ addComplaint }) {
     e.preventDefault()
     addComplaint({
       id: Date.now(),
-      name,
-      room,
+      name: user.name,
+      room: user.room,
       type,
       details,
       status: 'Pending'
     })
-    setName('')
-    setRoom('')
     setType('Food')
     setDetails('')
   }
@@ -25,8 +21,6 @@ function ComplaintForm({ addComplaint }) {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Make a Complaint</h2>
-      <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-      <input placeholder="Room number" value={room} onChange={(e) => setRoom(e.target.value)} required />
       <select value={type} onChange={(e) => setType(e.target.value)}>
         <option>Food</option>
         <option>Water</option>
