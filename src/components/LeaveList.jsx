@@ -1,4 +1,4 @@
-function LeaveList({ leaves, markDone }) {
+function LeaveList({ leaves, markDone, deleteLeave }) {
   return (
     <div>
       <h2>Leave Requests</h2>
@@ -9,9 +9,12 @@ function LeaveList({ leaves, markDone }) {
           <p>From: {leave.from} To: {leave.to}</p>
           <p>Reason: {leave.reason}</p>
           <p>Status: <span className={leave.status === 'Done' ? 'done' : 'pending'}>{leave.status}</span></p>
-          {leave.status === 'Pending' && (
-            <button onClick={() => markDone(leave.id)}>Mark Done</button>
-          )}
+          <div className="buttons">
+            {leave.status === 'Pending' && (
+              <button onClick={() => markDone(leave.id)}>Mark Done</button>
+            )}
+            <button className="delete" onClick={() => deleteLeave(leave.id)}>Delete</button>
+          </div>
         </div>
       ))}
     </div>

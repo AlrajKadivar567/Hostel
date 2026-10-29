@@ -85,3 +85,17 @@ button:hover {
   color: green;
   font-weight: bold;
 }
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.delete {
+  background: #c0392b;
+}
+
+.delete:hover {
+  background: #922b21;
+}

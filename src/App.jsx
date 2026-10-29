@@ -39,6 +39,14 @@ function App() {
     setComplaints(complaints.map((c) => (c.id === id ? { ...c, status: 'Done' } : c)))
   }
 
+  function deleteLeave(id) {
+    setLeaves(leaves.filter((l) => l.id !== id))
+  }
+
+  function deleteComplaint(id) {
+    setComplaints(complaints.filter((c) => c.id !== id))
+  }
+
   return (
     <div className="container">
       <h1>Hostel Portal</h1>
@@ -47,8 +55,8 @@ function App() {
         <ComplaintForm addComplaint={addComplaint} />
       </div>
       <div className="lists">
-        <LeaveList leaves={leaves} markDone={markLeaveDone} />
-        <ComplaintList complaints={complaints} markDone={markComplaintDone} />
+        <LeaveList leaves={leaves} markDone={markLeaveDone} deleteLeave={deleteLeave} />
+        <ComplaintList complaints={complaints} markDone={markComplaintDone} deleteComplaint={deleteComplaint} />
       </div>
     </div>
   )
